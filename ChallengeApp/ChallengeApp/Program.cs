@@ -1,24 +1,36 @@
-﻿// Zadanie domowe - dzień 5
+﻿// Zadanie domowe - dzień 6
 
-var numberToCheck = 5677000;
+using CHallengeApp;
 
-char[] numberToString = numberToCheck.ToString().ToArray();
-List<char> digitsInString = new List<char>();
+Emploee emploee1 = new Emploee("Jaś", "Jasialski", 36);
+Emploee emploee2 = new Emploee("Krzyś", "Krzysialski", 43);
+Emploee emploee3 = new Emploee("Kasia", "Kasialska", 27);
 
-for (var i = 0; i < 10; i++)
+emploee1.AddScore(3);
+emploee1.AddScore(2);
+emploee1.AddScore(4);
+
+emploee2.AddScore(1);
+emploee2.AddScore(4);
+emploee2.AddScore(1);
+
+emploee3.AddScore(3);
+emploee3.AddScore(4);
+emploee3.AddScore(5);
+
+List<Emploee> emploees = new List<Emploee>()
+    { emploee1, emploee2, emploee3 };
+
+int maxResult = -1;
+Emploee emploeeWithMaxResult = null;
+
+foreach (var emploee in emploees)
 {
-    digitsInString.Add((char)('0' + i));
-}
-Console.WriteLine("Wyniki dla liczby: " + numberToCheck);
-foreach (var digit in digitsInString)
-{
-    var instance = 0;
-    foreach (var sign in numberToString)
+    if (emploee.Result > maxResult)
     {
-        if (sign == digit)
-        {
-            instance++;
-        }
+        maxResult = emploee.Result;
+        emploeeWithMaxResult = emploee;
     }
-    Console.WriteLine(digit + " => " + instance);
 }
+Console.WriteLine(emploeeWithMaxResult.Name + " " + emploeeWithMaxResult.Surname + ", lat" + emploeeWithMaxResult.Age);
+Console.WriteLine("Suma ocen: " + maxResult);
