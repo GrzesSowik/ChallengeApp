@@ -1,4 +1,4 @@
-﻿// Zadanie domowe - dzień 9
+﻿// Zadanie domowe - dzień 10
 
 namespace ChallengeApp
 {
@@ -17,7 +17,44 @@ namespace ChallengeApp
 
         public void AddGrade(float grade)
         {
-            grades.Add(grade);
+
+            if (grade >= 0 && grade <= 100)
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("Invalid grade value");
+            }
+        }
+
+        public void AddGrade(int grade)
+        {
+            float result = (float)grade;
+            this.AddGrade(result);
+        }
+        public void AddGrade(long grade)
+        {
+            float result = (float)grade;
+            this.AddGrade(result);
+        }
+
+        public void AddGrade(double grade)
+        {
+            float result = (float)grade;
+            this.AddGrade(result);
+        }
+
+        public void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("String is not float");
+            }
         }
 
         public Statistics GetStatistics()
