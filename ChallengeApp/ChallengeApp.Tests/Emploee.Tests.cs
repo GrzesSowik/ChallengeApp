@@ -1,70 +1,50 @@
-// Zadnie domowe - Dzieñ 7
-
-using CHallengeApp;
+// Zadnie domowe - dzieñ 9
 
 namespace ChallengeApp.Tests
 {
-
-    public class Tests
+    public class EmploeeTests
     {
         [Test]
-        public void WhenEmployeeCollectOnlyPositiveScores_ShouldReturnCorrectResult()
+        public void emploeeGradePositiveAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski", 34);
-            user.AddScore(5);
-            user.AddScore(6);
+            var user = new Emploee("Grzeœ", "Grzesiowski");
+            user.AddGrade(10);
+            user.AddGrade(20);
+            user.AddGrade(60);
 
-            var result = user.Result;
+            var result = user.GetStatistics();
 
-            Assert.AreEqual(11, result);
-        }
-
-        [Test]
-        public void WhenEmployeeCollectMorePositiveThanNegativeScores_ShouldReturnCorrectResult()
-        {
-            var user = new Emploee("Grzeœ", "Grzesiowski", 34);
-            user.AddScore(5);
-            user.AddScore(6);
-            user.AddScore(-1);
-
-            var result = user.Result;
-
-            Assert.AreEqual(10, result);
+            Assert.AreEqual(30, result.Average);
+            Assert.AreEqual(10, result.Min);
+            Assert.AreEqual(60, result.Max);
         }
         [Test]
-        public void WhenEmployeeCollectTheSamePositiveAndNegativeScores_ShouldReturnCorrectResult()
+        public void emploeeGradeMixedAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski", 34);
-            user.AddScore(-3);
-            user.AddScore(3);
+            var user = new Emploee("Grzeœ", "Grzesiowski");
+            user.AddGrade(-10);
+            user.AddGrade(20);
+            user.AddGrade(50);
 
-            var result = user.Result;
+            var result = user.GetStatistics();
 
-            Assert.AreEqual(0, result);
-        }
-
-        [Test]
-        public void WhenEmployeeCollectLessPositiveThanNegativeScores_ShouldReturnCorrectResult()
-        {
-            var user = new Emploee("Grzeœ", "Grzesiowski", 34);
-            user.AddScore(5);
-            user.AddScore(-6);
-            user.AddScore(-1);
-
-            var result = user.Result;
-
-            Assert.AreEqual(-2, result);
+            Assert.AreEqual(20, result.Average);
+            Assert.AreEqual(-10, result.Min);
+            Assert.AreEqual(50, result.Max);
         }
         [Test]
-        public void WhenEmployeeCollectOnlyNegativeScores_ShouldReturnCorrectResult()
+        public void emploeeGradeNegativeAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski", 34);
-            user.AddScore(-5);
-            user.AddScore(-6);
+            var user = new Emploee("Grzeœ", "Grzesiowski");
+            user.AddGrade(-10);
+            user.AddGrade(-20);
+            user.AddGrade(-60);
 
-            var result = user.Result;
+            var result = user.GetStatistics();
 
-            Assert.AreEqual(-11, result);
+            Assert.AreEqual(-30, result.Average);
+            Assert.AreEqual(-60, result.Min);
+            Assert.AreEqual(-10, result.Max);
         }
     }
 }

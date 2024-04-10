@@ -1,32 +1,41 @@
-﻿// Zadanie domowe - dzień 6
+﻿// Zadanie domowe - dzień 9
 
-namespace CHallengeApp
+namespace ChallengeApp
 {
     public class Emploee
     {
         public string Name { get; private set; }
         public string Surname { get; private set; }
-        public int Age { get; private set; }
 
-        public Emploee(string name, string surname, int age)
+        public Emploee(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
-            this.Age = age;
         }
 
-        private List<int> score = new List<int>();
+        private List<float> grades = new List<float>();
 
-        public int Result
+        public void AddGrade(float grade)
         {
-            get
+            grades.Add(grade);
+        }
+
+        public Statistics GetStatistics()
+        {
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach (var grade in grades)
             {
-                return this.score.Sum();
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
             }
-        }
-        public void AddScore(int number)
-        {
-            score.Add(number);
+
+            statistics.Average /= grades.Count;
+            return statistics;
         }
     }
 }
