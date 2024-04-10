@@ -1,24 +1,24 @@
-﻿// Zadanie domowe - dzień 4
+﻿// Zadanie domowe - dzień 5
 
-bool isFemale = true;
-var name = "Ewa";
-var age = 30;
+var numberToCheck = 5677000;
 
-if (isFemale == true)
+char[] numberToString = numberToCheck.ToString().ToArray();
+List<char> digitsInString = new List<char>();
+
+for (var i = 0; i < 10; i++)
 {
-    if (age < 30)
-    {
-        Console.WriteLine("Kobieta poniżej 30 lat");
-    }
-    else if (age == 30 && name == "Ewa")
-    {
-        Console.WriteLine("Ewa, lat 30");
-    }
+    digitsInString.Add((char)('0' + i));
 }
-else
+Console.WriteLine("Wyniki dla liczby: " + numberToCheck);
+foreach (var digit in digitsInString)
 {
-    if (age < 18)
+    var instance = 0;
+    foreach (var sign in numberToString)
     {
-        Console.WriteLine("Męszczyzna ponieżej 18 lat");
+        if (sign == digit)
+        {
+            instance++;
+        }
     }
+    Console.WriteLine(digit + " => " + instance);
 }
