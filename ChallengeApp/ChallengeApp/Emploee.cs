@@ -1,4 +1,4 @@
-﻿// Zadanie domowe - dzień 12
+﻿// Zadanie domowe - dzień 12 poprawione
 
 namespace ChallengeApp
 {
