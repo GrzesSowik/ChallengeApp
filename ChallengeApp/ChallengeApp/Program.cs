@@ -1,4 +1,4 @@
-﻿// Zadanie domowe - dzień 12
+﻿// Zadanie domowe - dzień 13
 
 using ChallengeApp;
 
@@ -16,7 +16,15 @@ while (true)
     {
         break;
     }
-    emploee.AddGrade(input);
+    
+    try
+    {
+        emploee.AddGrade(input);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
+    }
 }
 
 var statistics = emploee.GetStatistics();
