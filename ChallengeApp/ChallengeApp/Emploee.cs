@@ -1,18 +1,14 @@
 ﻿// Zadanie domowe - dzień 13
 
+using System.Diagnostics;
+
 namespace ChallengeApp
 {
-    public class Emploee
+    public class Emploee : Person
     {
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
-        private readonly char sex = 'M';
-
         public Emploee(string name, string surname)
+            : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.sex = 'K';
         }
 
         private List<float> grades = new List<float>();
