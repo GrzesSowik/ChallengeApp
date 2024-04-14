@@ -1,8 +1,8 @@
-﻿// Zadanie domowe - dzień 14
+﻿// Zadanie domowe - dzień 15
 
 namespace ChallengeApp
 {
-    public abstract class Person
+    public abstract class Person : IPerson
     {
         public string Name { get; private set; }
         public string Surname { get; private set; }
