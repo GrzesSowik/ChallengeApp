@@ -1,4 +1,4 @@
-﻿// Zadanie domowe - dzień 15
+﻿// Zadanie domowe - dzień 15 poprawione
 
 namespace ChallengeApp
 {
@@ -26,7 +26,8 @@ namespace ChallengeApp
 
         public void AddGrade(double grade)
         {
-            throw new Exception("Supervisor is evaluated according to the school grade. Grades between 1 and 6");
+            float result = (float)grade;
+            AddGrade(result);
         }
 
         public void AddGrade(int grade)
@@ -37,7 +38,20 @@ namespace ChallengeApp
 
         public void AddGrade(char grade)
         {
-            throw new Exception("Supervisor is evaluated according to the school grade. Grades between 1 and 6");
+            switch (grade)
+            {
+                case '6':
+                case '5':
+                case '4':
+                case '3':
+                case '2':
+                case '1':
+                    string result = grade.ToString();
+                    AddGrade (result);
+                    break;
+                default:
+                    throw new Exception("Invalid grade value");
+            }
         }
 
         public void AddGrade(string grade)
@@ -96,7 +110,15 @@ namespace ChallengeApp
                     this.AddGrade(15);
                     break;
                 default:
-                    throw new Exception("Wrong grade");
+                    if (float.TryParse(grade, out float result))
+                    {
+                        this.AddGrade(result);
+                        break;
+                    }
+                    else
+                    {
+                        throw new Exception("String is not float");
+                    }
             }
         }
 
