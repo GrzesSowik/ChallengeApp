@@ -1,21 +1,16 @@
-﻿// Zadanie domowe - dzień 15
-
-using System.Diagnostics;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
-    public class Emploee : Person, IEmploee
+    internal class EmploeeInMemory : EmploeeBase
     {
-        public Emploee(string name, string surname)
-            : base (name, surname)
+        public EmploeeInMemory(string name, string surname)
+            : base(name, surname)
         {
         }
 
         private List<float> grades = new List<float>();
 
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
-
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
@@ -26,20 +21,19 @@ namespace ChallengeApp
             }
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             float result = (float)grade;
             AddGrade(result);
-
         }
 
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             float result = (float)grade;
             this.AddGrade(result);
         }
 
-        public void AddGrade(char grade)
+        public override void AddGrade(char grade)
         {
             grade = char.ToUpper(grade);
             switch (grade)
@@ -59,12 +53,15 @@ namespace ChallengeApp
                 case 'E':
                     AddGrade(20);
                     break;
+                case 'F':
+                    AddGrade(0);
+                    break;
                 default:
                     throw new Exception("Wrong Letter");
             }
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -81,11 +78,10 @@ namespace ChallengeApp
                 {
                     throw new Exception("String is not float");
                 }
-
             }
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -119,7 +115,6 @@ namespace ChallengeApp
                     statistics.AverageLetter = 'E';
                     break;
             }
-
             return statistics;
         }
     }

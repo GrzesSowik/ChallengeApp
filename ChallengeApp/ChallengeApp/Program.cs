@@ -1,6 +1,4 @@
-﻿// Zadanie domowe - dzień 15
-
-using ChallengeApp;
+﻿using ChallengeApp;
 
 internal class Program
 {
@@ -10,31 +8,31 @@ internal class Program
         Console.WriteLine("=======================================");
         Console.WriteLine();
 
-        var supervisor = new Supervisor("Grześ", "Sowik");
+        var emploee = new EmploeeInFile("Grześ", "Sowik");
 
         while (true)
         {
-            Console.WriteLine("Podaj kolejną ocenę Kierownika: ");
+            Console.WriteLine("Podaj kolejną ocenę Pracownika: ");
             var input = Console.ReadLine();
-            if (input.ToLower() == "q")
+            if (input.Equals("q",StringComparison.OrdinalIgnoreCase))
             {
                 break;
             }
 
             try
             {
-                supervisor.AddGrade(input);
+                emploee.AddGrade(input);
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Exception catched: {e.Message}");
             }
         }
-        var statistics = supervisor.GetStatistics();
+        var statistics = emploee.GetStatistics();
         Console.WriteLine();
         Console.WriteLine("---------------------------------------");
         Console.WriteLine();
-        Console.WriteLine(supervisor.Name + " " + supervisor.Surname + " - Ocena: " + statistics.AverageLetter);
+        Console.WriteLine(emploee.Name + " " + emploee.Surname + " - Ocena: " + statistics.AverageLetter);
         Console.WriteLine();
         Console.WriteLine("Wyniki szczegółowe:");
         Console.WriteLine($"Średnia: {statistics.Average:N2}");

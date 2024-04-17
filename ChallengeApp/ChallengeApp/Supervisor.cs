@@ -2,7 +2,7 @@
 
 namespace ChallengeApp
 {
-    public class Supervisor : Person, IEmploee
+    public class Supervisor : EmploeeBase
     {
         public Supervisor(string name, string surname)
             : base(name, surname)
@@ -11,7 +11,7 @@ namespace ChallengeApp
 
         private List<float> grades = new List<float>();
 
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
 
             if (grade >= 0 && grade <= 100)
@@ -24,19 +24,19 @@ namespace ChallengeApp
             }
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             float result = (float)grade;
             AddGrade(result);
         }
 
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             float result = (float)grade;
             this.AddGrade(result);
         }
 
-        public void AddGrade(char grade)
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
@@ -54,7 +54,7 @@ namespace ChallengeApp
             }
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             switch (grade) 
             {
@@ -122,7 +122,7 @@ namespace ChallengeApp
             }
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
