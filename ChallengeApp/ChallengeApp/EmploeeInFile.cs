@@ -26,61 +26,22 @@
 
         public override void AddGrade(double grade)
         {
-            float result = (float)grade;
-            this.AddGrade(result);
+            base.AddGrade(grade);
         }
 
         public override void AddGrade(int grade)
         {
-            float result = (float)grade;
-            this.AddGrade(result);
+            base.AddGrade(grade);
         }
 
         public override void AddGrade(char grade)
         {
-            grade = char.ToUpper(grade);
-            switch (grade)
-            {
-                case 'A':
-                    AddGrade(100);
-                    break;
-                case 'B':
-                    AddGrade(80);
-                    break;
-                case 'C':
-                    AddGrade(60);
-                    break;
-                case 'D':
-                    AddGrade(40);
-                    break;
-                case 'E':
-                    AddGrade(20);
-                    break;
-                case 'F':
-                    AddGrade(0);
-                    break;
-                default:
-                    throw new Exception("Wrong Letter");
-            }
+            base.AddGrade(grade);
         }
 
         public override void AddGrade(string grade)
         {
-            if (float.TryParse(grade, out float result))
-            {
-                this.AddGrade(result);
-            }
-            else
-            {
-                if (grade.Length == 1)
-                {
-                    AddGrade((char)grade[0]);
-                }
-                else
-                {
-                    throw new Exception("String is not float");
-                }
-            }
+            base.AddGrade(grade);
         }
 
         public override Statistics GetStatistics()
@@ -127,7 +88,6 @@
                         statistics.AverageLetter = 'E';
                         break;
                 }
-
             }
             return statistics;
         }
