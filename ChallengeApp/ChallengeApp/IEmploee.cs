@@ -1,4 +1,4 @@
-﻿// Zadanie domowe - dzień 15
+﻿using static ChallengeApp.EmploeeBase;
 
 namespace ChallengeApp
 {
@@ -10,7 +10,8 @@ namespace ChallengeApp
         void AddGrade(char grade);
         void AddGrade(string grade);
 
+        event GradeAddedDelegate GradeAdded;
+
         Statistics GetStatistics();
     }
-
 }

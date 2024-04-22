@@ -2,6 +2,8 @@
 {
     internal class EmploeeInFile : EmploeeBase
     {
+        public override event GradeAddedDelegate GradeAdded;
+
         private const string fileName = "C:\\Users\\grzes\\OneDrive\\Pulpit\\ChallengeApp\\grades.txt";
 
         public EmploeeInFile(string name, string surname) : base(name, surname)
@@ -16,6 +18,10 @@
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
+                }
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
                 }
             }
             else
