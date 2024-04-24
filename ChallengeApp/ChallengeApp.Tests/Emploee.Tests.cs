@@ -1,13 +1,11 @@
-// Zadnie domowe - dzieñ 12
-
 namespace ChallengeApp.Tests
 {
-    public class EmploeeTests
+    public class EmploeeInFileTests
     {
         [Test]
         public void emploeeGradeNumberInRangeAverageAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade(100);
             user.AddGrade(50);
             user.AddGrade(0);
@@ -21,7 +19,7 @@ namespace ChallengeApp.Tests
 
         public void emploeeGradeDoubleInRangeAverageAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade(100);
             user.AddGrade(50);
             user.AddGrade(0);
@@ -36,7 +34,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void emploeeGradeNumberOutOfRangeMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade(-1);
             user.AddGrade(101);
 
@@ -49,7 +47,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void emploeeGradeExpectedUperCharacterAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade('A');
             user.AddGrade('B');
             user.AddGrade('C');
@@ -66,7 +64,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void emploeeGradeUnxpectedUperCharacterAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade('F');
 
             var result = user.GetStatistics();
@@ -79,7 +77,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void emploeeGradeExpectedLowerCharacterAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade('a');
             user.AddGrade('b');
             user.AddGrade('c');
@@ -96,7 +94,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void emploeeGradeUnxpectedLowerCharacterAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade('f');
 
             var result = user.GetStatistics();
@@ -109,7 +107,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void emploeeGradeExpectedLowerSignAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade("a");
             user.AddGrade("b");
             user.AddGrade("c");
@@ -126,7 +124,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void emploeeGradeUnxpectedLowerSignAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade("f");
 
             var result = user.GetStatistics();
@@ -139,7 +137,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void emploeeGradeUnxpectedStringAverageMinMax()
         {
-            var user = new Emploee("Grzeœ", "Grzesiowski");
+            var user = new EmploeeInMemory("Grzeœ", "Grzesiowski");
             user.AddGrade("f");
 
             var result = user.GetStatistics();
